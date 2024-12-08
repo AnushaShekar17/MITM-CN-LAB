@@ -46,14 +46,14 @@ puts "node [$node_id] received answer from $from with round trip time Srtt ms
 #space between and $ and rtt */
 $ns connect $p1 $p5
 $ns connect $p3 $p4 proc
-finish {} {global ns nf tf
+finish {} { global ns nf tf  #Finish Procedure
 $ns flush-trace
 close $nf
 close $tf
 exec nam lab2.nam &
 exit O
 }
-$ns at 0.1 "$p1 send"
+$ns at 0.1 "$p1 send"     #Schedule events
 $ns at 0.2 "$p1 send"
 $ns at 0.3 "$p1 send"
 $ns at 0.4 "$p1 send"
@@ -112,4 +112,6 @@ $ns at 2.7 "$p3 send"
 $ns at 2.8 "$p3 send"
 $ns at 2.9 "$p3 send"
 $ns at 3.0 "finish"
+
+#Run the Simulation
 $ns run
