@@ -37,4 +37,74 @@ Agent/Ping instproc reev {from rtt} {
 $self instvar node_
 puts "node [$node_id] received answer from $from with round trip time Srtt msec"
 }
-
+#please provide space between $node and id. No space between $ and from. No
+#space between and $ and rtt */
+$ns connect $p1 $p5
+$ns connect $p3 $p4 proc
+finish {} {global ns nf tf
+$ns flush-trace
+close $nf
+close $tf
+exec nam lab2.nam &
+exit O
+}
+$ns at 0.1 "$p1 send"
+$ns at 0.2 "$p1 send"
+$ns at 0.3 "$p1 send"
+$ns at 0.4 "$p1 send"
+$ns at 0.5 "$pl send"
+$ns at 0.6 "$p1 send"
+$ns at 0.7 "$p1 send"
+$ns at 0.8 "$p1 send"
+$ns at 0.9 "$p1 send"
+$ns at 1.0 "$p1 send"
+$ns at 1.1 "$p1 send"
+$ns at 1.2 "$p1 send"
+$ns at 1.3 "$p1 send"
+$ns at 1.4 "$p1 send"
+$ns at 1.5 "$pl send"
+$ns at 1.6 "$p1 send"
+$ns at 1.7 "$p1 send"
+$ns at 1.8 "$p1 send"
+$ns at 1.9 "$p1 send"
+$ns at 2.0 "$pl send"
+$ns at 2.1 "$p1 send"
+$ns at 2.2 "$p1 send"
+$ns at 2.3 "$p1 send"
+$ns at 2.4 "$p1 send"
+$ns at 2.5 "$p1 send"
+$ns at 2.6 "$p1 send"
+$ns at 2.7 "$p1 send"
+$ns at 2.8 "$p1 send"
+$ns at 2.9 "$p1 send"
+$ns at 0.1 "$p3 send"
+$ns at 0.2 "$p3 send"
+$ns at 0.3 "$p3 send"
+$ns at 0.4 "$p3 send"
+$ns at 0.5 "$p3 send"
+$ns at 0.6 "$p3 send"
+$ns at 0.7 "$p3 send"
+$ns at 0.8 "$p3 send"
+$ns at 0.9 "$p3 send"
+$ns at 1.0 "$p3 send"
+$ns at 1.1 "$p3 send"
+$ns at 1.2 "$p3 send"
+$ns at 1.3 "$p3 send"
+$ns at 1.4 "$p3 send"
+$ns at 1.5 "$p3 send"
+$ns at 1.6 "$p3 send"
+$ns at 1.7 "$p3 send"
+$ns at 1.8 "$p3 send"
+$ns at 1.9 "$p3 send"
+$ns at 2.0 "$p3 send"
+$ns at 2.1 "$p3 send"
+$ns at 2.2 "$p3 send"
+$ns at 2.3 "$p3 send"
+$ns at 2.4 "$p3 send"
+$ns at 2.5 "$p3 send
+$ns at 2.6 "$p3 send"
+$ns at 2.7 "$p3 send"
+$ns at 2.8 "$p3 send"
+$ns at 2.9 "$p3 send"
+$ns at 3.0 "finish"
+$ns run
