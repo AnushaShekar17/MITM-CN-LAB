@@ -1,0 +1,117 @@
+#Implement transmission of ping messages/trace route over a network topology consisting of 6 nodes and find the number of packets dropped due to congestion.
+
+set ns [new Simulator]     #Create Simulator
+
+set nf [open lab2.nam w]   #Open trace and NAM trace file
+$ns namtrace-all
+$nf set tf [openlab2.tr w]
+n$s trace-all
+
+$tf set no [$nsnode]    #Create six nodes
+set n1 [$ns node] 
+set n2 [$ns node]
+set n3 [$nsnode] 
+set n4 [Sns node] 
+set n5 [$ns node]
+
+$n4 shape box        #Connect the nodes
+Sns duplex-link $n0 5n4 1005Mb 1ms DropTail
+$ns duplex-link Snl $n4 50Mb 1ms DropTail
+Sns duplex-link $n2 $n4 2000Mb 1ms DropTail
+$ns duplex-link $n3 $n4 200Mb 1ms Drop Tail
+$ns duplex-link $n4 $n5 1Mb 1ms DropTail
+
+set pl [new Agent/Ping]    #Define the recv function for the class 'Agent/Ping'
+$ns attach-agent $n0 $p1
+$p1 set packetSize_50000
+$p1 set interval_0.0001
+set p2 [new Agent/Ping]
+$ns attach-agent $nl $p2 set p3 [new Agent/Ping]
+$ns attach-agent $n2 $p3
+$p3 set packetSize_30000
+$p3 set interval_ 0.00001
+set p4 [new Agent/Ping]      #Create two ping agents and attach them to n0 and n5
+$ns attach-agent $n3 $p4
+set p4 [new Agent/Ping]
+$ns attach-agent $n5 $p5
+
+$ns queue-limit $n0 $n4 5    #Set queue size and monitor the queue
+$ns queue-limit $n2 Sn4 3     #Queue size is set to 2 to observe the drop in ping packets
+$ns queue-limit $n4 Sn5 2
+Agent/Ping instproc reev {from rtt} {
+$self instvar node_
+puts "node [$node_id] received answer from $from with round trip time Srtt msec"
+}
+#please provide space between $node and id. No space between $ and from. No
+#space between and $ and rtt */
+$ns connect $p1 $p5
+$ns connect $p3 $p4 proc
+finish {} { global ns nf tf  #Finish Procedure
+$ns flush-trace
+close $nf
+close $tf
+exec nam lab2.nam &
+exit O
+}
+$ns at 0.1 "$p1 send"     #Schedule events
+$ns at 0.2 "$p1 send"
+$ns at 0.3 "$p1 send"
+$ns at 0.4 "$p1 send"
+$ns at 0.5 "$pl send"
+$ns at 0.6 "$p1 send"
+$ns at 0.7 "$p1 send"
+$ns at 0.8 "$p1 send"
+$ns at 0.9 "$p1 send"
+$ns at 1.0 "$p1 send"
+$ns at 1.1 "$p1 send"
+$ns at 1.2 "$p1 send"
+$ns at 1.3 "$p1 send"
+$ns at 1.4 "$p1 send"
+$ns at 1.5 "$pl send"
+$ns at 1.6 "$p1 send"
+$ns at 1.7 "$p1 send"
+$ns at 1.8 "$p1 send"
+$ns at 1.9 "$p1 send"
+$ns at 2.0 "$pl send"
+$ns at 2.1 "$p1 send"
+$ns at 2.2 "$p1 send"
+$ns at 2.3 "$p1 send"
+$ns at 2.4 "$p1 send"
+$ns at 2.5 "$p1 send"
+$ns at 2.6 "$p1 send"
+$ns at 2.7 "$p1 send"
+$ns at 2.8 "$p1 send"
+$ns at 2.9 "$p1 send"
+$ns at 0.1 "$p3 send"
+$ns at 0.2 "$p3 send"
+$ns at 0.3 "$p3 send"
+$ns at 0.4 "$p3 send"
+$ns at 0.5 "$p3 send"
+$ns at 0.6 "$p3 send"
+$ns at 0.7 "$p3 send"
+$ns at 0.8 "$p3 send"
+$ns at 0.9 "$p3 send"
+$ns at 1.0 "$p3 send"
+$ns at 1.1 "$p3 send"
+$ns at 1.2 "$p3 send"
+$ns at 1.3 "$p3 send"
+$ns at 1.4 "$p3 send"
+$ns at 1.5 "$p3 send"
+$ns at 1.6 "$p3 send"
+$ns at 1.7 "$p3 send"
+$ns at 1.8 "$p3 send"
+$ns at 1.9 "$p3 send"
+$ns at 2.0 "$p3 send"
+$ns at 2.1 "$p3 send"
+$ns at 2.2 "$p3 send"
+$ns at 2.3 "$p3 send"
+$ns at 2.4 "$p3 send"
+$ns at 2.5 "$p3 send
+$ns at 2.6 "$p3 send"
+$ns at 2.7 "$p3 send"
+$ns at 2.8 "$p3 send"
+$ns at 2.9 "$p3 send"
+$ns at 3.0 "finish"
+
+#Run the Simulation
+$ns run
