@@ -35,7 +35,7 @@ $ns attach-agent $n3 $p4
 set p4 [new Agent/Ping]
 $ns attach-agent $n5 $p5
 
-$ns queue-limit $n0 $n4 5    #Set queue size and monitor the queue
+$ns queue-limit $n0 $n4 5     #Set queue size and monitor the queue
 $ns queue-limit $n2 Sn4 3     #Queue size is set to 2 to observe the drop in ping packets
 $ns queue-limit $n4 Sn5 2
 Agent/Ping instproc reev {from rtt} {
