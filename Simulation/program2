@@ -14,7 +14,7 @@ set n3 [$nsnode]
 set n4 [Sns node] 
 set n5 [$ns node]
 
-$n4 shape box        #Connect the nodes
+$n4 shape box       #Connect the nodes
 Sns duplex-link $n0 5n4 1005Mb 1ms DropTail
 $ns duplex-link Snl $n4 50Mb 1ms DropTail
 Sns duplex-link $n2 $n4 2000Mb 1ms DropTail
